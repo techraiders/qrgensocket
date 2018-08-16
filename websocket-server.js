@@ -6,6 +6,11 @@ WSS.on('connection', (ws) => {
   //console.log('We are connected.');
 
   ws.on('message', (message) => {
+
+    WSS.clients.forEach(client => {
+      client.send(message);
+    });
+
     console.log(message);
   });
 });
